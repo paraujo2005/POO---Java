@@ -1,4 +1,4 @@
-# Cálculo de Impostos e Taxas em Operações Comerciai
+# Cálculo de Impostos e Taxas em Operações Comerciais
 
 Este projeto é um programa em Java desenvolvido para calcular impostos e taxas em operações comerciais, utilizando conceitos de orientação a objetos. O programa foi criado como parte da disciplina de Programação Orientada a Objetos (POO) e abrange a aplicação de alíquotas específicas de ISS, ICMS e IPI, conforme o tipo de item da operação (produto ou serviço).
 
