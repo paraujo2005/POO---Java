@@ -91,3 +91,6 @@ As turmas são organizadas com base nas matérias e nos cursos correspondentes:
    - Cada professor é alocado em uma turma conforme a matéria que ensina.
 3. **Impressão das Turmas**:
    - O sistema imprime a lista de turmas formadas, exibindo os alunos e professores alocados.
+
+##Link Vídeo Explicativo:
+- https://drive.google.com/file/d/1KMLgpTeqPZtxIaecuPUezhjTmQF3y2qo/view?usp=sharing 
