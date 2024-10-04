@@ -22,7 +22,8 @@ public class TestaCadastro
             System.out.println("Menu de opções:");
             System.out.println("1. Adicionar Pessoa");
             System.out.println("2. Imprimir Cadastro");
-            System.out.println("3. Sair");
+            System.out.println("3. Remover Pessoa");
+            System.out.println("4. Sair");
             System.out.printf("Escolha uma opção: ");
             int opcao = scanner.nextInt();
             scanner.nextLine();
@@ -98,8 +99,14 @@ public class TestaCadastro
                 case 2:
                     cadastro.imprimeCadastro();
                     break;
-                    
+                
                 case 3:
+                    System.out.print("\nDigite o nome da pessoa a ser removida: ");
+                    nome = scanner.nextLine();
+                    cadastro.removePessoaPorNome(nome);
+                    break;
+                    
+                case 4:
                     continuar = false;
                     break;
                     
@@ -112,4 +119,3 @@ public class TestaCadastro
         scanner.close();
     }
 }
-adicionado
