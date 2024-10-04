@@ -25,6 +25,25 @@ public class CadastroPessoas{
         }
     }
     
+    public void removePessoaPorNome(String nome){
+        boolean pessoaEncontrada = false;
+        for (int i = 0; i < getQtdAtual(); i++){
+            if (pessoas[i].getNome().equalsIgnoreCase(nome)){
+                pessoaEncontrada = true;
+                for (int j = i; j < getQtdAtual() - 1; j++){
+                    pessoas[j] = pessoas[j + 1];
+                }
+                pessoas[getQtdAtual() - 1] = null;
+                setQtdAtual(getQtdAtual() - 1);
+                System.out.println(nome + " removido do cadastro.");
+                break;
+            }
+        }
+        if (!pessoaEncontrada) {
+            System.out.println("Pessoa não encontrada.");
+        }
+    }
+    
     public void setQtdTotal(int qtdTotal){
         this.qtdTotal = qtdTotal;
     }
