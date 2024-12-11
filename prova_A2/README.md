@@ -98,3 +98,54 @@ funcionalidades de cada uma das classes.
 - **testarConexaoFechada**: Teste para verificar se a conexão pode ser fechada corretamente. Verifica o estado da conexão após seu fechamento.
 - **testarTempoDeConexao**: Teste para verificar o tempo de conexão. Verifica se a conexão é estabelecida dentro de um tempo razoável.
 - **testarConexaoOperacaoBasica**: Teste para verificar se a conexão suporta operações básicas. Verifica se a conexão pode realizar uma consulta simples.
+
+### GerenciadorTabelasTest
+- **testarCriacaoDeTodosOsTiposDeTabelas**: Teste para verificar se o método `verificarOuCriarTabelas()` cria as tabelas corretamente. Verifica a criação das tabelas `usuarios`, `cidades` e `visitadas` no banco de dados. 
+- **testarCriacaoDeTabelasJaExistentes**: Teste para garantir que as tabelas não sejam recriadas se já existirem. O teste executa o método `verificarOuCriarTabelas()` duas vezes e garante que nenhuma exceção seja lançada.
+- **testarEstruturaTabelaUsuarios**: Teste para verificar a estrutura da tabela `usuarios`. Verifica se a tabela contém as colunas esperadas (`id`, `cpf`, `senha`, `email`, `empresa`) e se o número de colunas é o correto.
+- **testarChavesEstrangeirasVisitadas**: Teste para verificar as chaves estrangeiras na tabela `visitadas`. Verifica se as chaves estrangeiras para as tabelas `usuarios` e `cidades` estão presentes.
+
+### UsuarioTest
+- **deveCriarUsuarioComAtributosCorretos**: Teste para verificar a criação de um usuário com os atributos corretos. Verifica se o CPF, senha, email e empresa são atribuídos corretamente ao criar um novo usuário.
+- **deveAlterarAtributosDoUsuario**: Teste para garantir que os atributos de um usuário possam ser alterados corretamente. Verifica se a senha, email e empresa são atualizados quando chamados os métodos de alteração.
+- **deveCriarMultiplosUsuariosComDadosDiferentes**: Teste parametrizado para criar múltiplos usuários com diferentes dados de entrada. Verifica se o CPF, senha, email e empresa são definidos corretamente para cada usuário criado.
+- **devePermitirCpfComTamanhoMaximo**: Teste para verificar se o usuário permite um CPF com tamanho máximo de 15 caracteres. Verifica se o CPF longo é aceito e armazenado corretamente.
+- **naoDevePossuirMetodosGetInvalidos**: Teste para garantir que os métodos `get` do usuário não retornem valores nulos. Verifica se os métodos `getCpf()`, `getSenha()`, `getEmail()` e `getEmpresa()` retornam os valores corretamente.
+- **devePermitirAlteracaoDeAtributosParaValoresVazios**: Teste para verificar se os atributos de um usuário podem ser alterados para valores vazios. Verifica se a senha, email e empresa podem ser definidos como strings vazias.
+
+### UsuarioRepositoryTest
+- **inicializar**: Configuração inicial dos testes. Cria o repositório de usuários e estabelece a conexão com o banco de dados. Também limpa as tabelas antes de iniciar os testes.
+- **finalizarConexao**: Fechamento da conexão com o banco de dados após todos os testes.
+- **prepararCadaTeste**: Limpeza das tabelas do banco de dados antes de cada teste para garantir que o estado do banco seja consistente.
+- **limparTabelasParaTeste**: Método auxiliar para limpar as tabelas `visitadas` e `usuarios` no banco de dados, garantindo que os testes não sejam afetados por dados anteriores.
+- **testarAdicionarUsuario**: Teste para garantir que um usuário seja adicionado corretamente ao banco de dados. Verifica se o usuário foi inserido corretamente com os dados de CPF, email e empresa.
+- **testarListarUsuarios**: Teste para verificar se a listagem de usuários funciona corretamente. Adiciona usuários ao banco de dados e verifica se eles aparecem corretamente na lista recuperada.
+- **testarAlterarUsuario**: Teste para garantir que um usuário existente seja alterado corretamente. Modifica o usuário no banco de dados e verifica se as alterações foram aplicadas corretamente.
+- **testarExcluirUsuario**: Teste para verificar se a exclusão de um usuário funciona corretamente. Exclui um usuário do banco de dados e verifica se ele foi removido com sucesso.
+- **testarAutenticacaoDeUsuario**: Teste para verificar a autenticação de um usuário com credenciais corretas e incorretas. Adiciona um usuário e testa se ele pode ser autenticado corretamente com a senha correta e se a autenticação falha com uma senha incorreta.
+
+### CidadesVisitadasTest
+- **deveCriarCidadeVisitadaComAtributosCorretos**: Teste para verificar se a criação de uma cidade visitada inicializa corretamente os atributos (`nome`, `pais`, `ano`). O teste assegura que os valores atribuídos ao criar a instância da classe estejam corretos.
+- **deveAlterarAtributosDaCidadeVisitada**: Teste para verificar se é possível alterar os atributos (`nome`, `pais`, `ano`) de uma cidade visitada depois de sua criação. O teste garante que os novos valores sejam atribuídos corretamente.
+- **deveCriarMultiplasCidadesVisitadasComDadosDiferentes**: Teste parametrizado para criar várias cidades visitadas com dados diferentes (nome, país e ano). Verifica se os valores passados para a criação da cidade são corretamente atribuídos.
+- **devePermitirNomesComTamanhoMaximo**: Teste para verificar se é possível criar uma cidade visitada com um nome longo, dentro dos limites do sistema. Garante que o nome longo seja aceito sem erros.
+- **devePermitirPaisesComNomesLongos**: Teste para verificar se é possível criar uma cidade visitada com um nome de país longo, garantindo que o nome longo do país seja aceito corretamente.
+- **devePermitirAnosAnterioresEPosteriores**: Teste para verificar se a cidade visitada pode ter anos tanto passados (anteriores a 2023) quanto futuros (posteriores a 2023). Verifica a aceitação de anos fora do intervalo normal.
+- **naoDevePossuirMetodosGetInvalidos**: Teste para garantir que os métodos `get` da classe `CidadesVisitadas` não retornem valores inválidos, como nulos ou zero, para os atributos `nome`, `pais` e `ano`.
+- **devePermitirAlteracaoDeAtributosParaValoresVazios**: Teste para verificar se é possível alterar os atributos `nome` e `pais` da cidade visitada para valores vazios (`""`), assegurando que a classe permita esses valores.
+
+### CidadesVisitadasRepositoryTest
+- **testarBuscarUsuarioIdPorCpfQuandoUsuarioExiste**: Teste para verificar a busca do ID do usuário pelo CPF, quando o usuário existe no banco de dados. Verifica se o ID retornado não é nulo e é maior que zero.
+- **testarBuscarUsuarioIdPorCpfQuandoUsuarioNaoExiste**: Teste para verificar a busca do ID do usuário pelo CPF, quando o usuário não existe no banco de dados. Verifica se o ID retornado é nulo.
+- **testarBuscarCidadeIdPorNomeEPaisQuandoCidadeExiste**: Teste para verificar a busca do ID da cidade por nome e país, quando a cidade existe no banco de dados. Verifica se o ID retornado não é nulo e é maior que zero.
+- **testarBuscarCidadeIdPorNomeEPaisQuandoCidadeNaoExiste**: Teste para verificar a busca do ID da cidade por nome e país, quando a cidade não existe no banco de dados. Verifica se o ID retornado é nulo.
+- **testarAdicionarCidadeVisitadaComNovaCidade**: Teste para verificar se a adição de uma nova cidade visitada funciona corretamente. Verifica se a cidade visitada foi registrada no banco de dados com o ano correto.
+- **testarAdicionarCidadeVisitadaComCidadeExistente**: Teste para verificar se a adição de uma cidade visitada existente funciona corretamente. Verifica se a cidade visitada foi registrada no banco de dados com o ano correto.
+- **testarListarCidadesVisitadas**: Teste para verificar a listagem de cidades visitadas por um usuário. Verifica se as cidades inseridas estão presentes na lista e se os anos de visita correspondem aos dados inseridos.
+- **testarAlterarAnoVisita**: Teste para verificar a alteração do ano de uma visita. Verifica se o ano da visita foi atualizado corretamente no banco de dados.
+- **testarDeletarVisita**: Teste para verificar a deleção de uma visita registrada. Verifica se a visita foi removida corretamente do banco de dados.
+  
+**Métodos auxiliares**:
+- **inserirUsuario**: Método para inserir um usuário no banco de dados.
+- **inserirCidade**: Método para inserir uma cidade no banco de dados.
+- **obterIdUsuarioPorCpf**: Método para obter o ID de um usuário baseado no CPF.
